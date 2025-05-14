@@ -1,0 +1,18 @@
+.x-center{
+    position: relative;
+    top: 20%;
+}
+.x-label-text-el{
+    font-size: 20px;
+}
+.x-input-el {
+
+    padding-bottom: 12px !important;
+}
+.x-paneltitle .x-text-el{
+    font-size: 24px;
+    height: 30px;
+}
+.x-panelheader.x-horizontal{
+    height: 64px;
+}
