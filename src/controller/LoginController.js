@@ -1,16 +1,16 @@
-Ext.define('ModernLoginApp.controller.LoginController', {
+Ext.define('MyApp.view.login.LoginController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.login',
 
-    onLoginClick: function(btn) {
-        const form = btn.up('formpanel'),
-            values = form.getValues();
+    onLoginClick: function () {
+        const form = this.getView();
+        const vals = form.getValues();
 
-        if (values.user === 'admin' && values.pass === 'padmin') {
-            Ext.Viewport.removeAll(true, true);
-            Ext.Viewport.add({ xtype: 'mainview' }); 
+        if (vals.login === 'admin' && vals.password === 'padmin') {
+            Ext.Viewport.removeAll(true,true);                // Скрыть форму логина
+            Ext.Viewport.add({ xtype: 'mainview' }); // Показать Main
         } else {
             Ext.Msg.alert('Ошибка', 'Неверный логин или пароль');
         }
-    },
+    }
 });

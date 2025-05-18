@@ -1,5 +1,5 @@
-Ext.define('ModernLoginApp.view.login.LoginForm', {
-    extend: 'Ext.form.Panel',
+Ext.define('MyApp.view.login.LoginForm', {
+    extend: 'Ext.form.Panel',                                                         
     xtype: 'loginform',
     controller: 'login',
     title: 'Форма входа',
@@ -15,7 +15,7 @@ Ext.define('ModernLoginApp.view.login.LoginForm', {
         {
             xtype: 'textfield',
             label: 'Логин',
-            name: 'user',
+            name: 'login',
             clearable: true,
             labelAlign: 'placeholder',
             style: {
@@ -25,7 +25,7 @@ Ext.define('ModernLoginApp.view.login.LoginForm', {
         {
             xtype: 'passwordfield',
             label: 'Пароль',
-            name: 'pass',
+            name: 'password',
             clearable: true,
             labelAlign: 'placeholder',
             revealable: true,
@@ -50,3 +50,4 @@ Ext.define('ModernLoginApp.view.login.LoginForm', {
         }
     ]
 });
+

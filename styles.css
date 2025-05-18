@@ -1,3 +1,4 @@
+/* login */
 .x-center{
     position: relative;
     top: 20%;
@@ -15,4 +16,25 @@
 }
 .x-panelheader.x-horizontal{
     height: 64px;
+}
+
+.x-textfield .x-input-el{
+    font-size: 16px;
+    color: darkgray;
+}
+
+
+/* main */
+.x-toolbar-body-el.x-horizontal > .x-component {
+    margin-right: 2;
+    flex: none !important;
+}
+.x-layout-box.x-pack-center {
+    justify-content: space-around;
+}
+.x-panel-body-el {
+    color: #666 !important;
+    color: var(--color);
+    font: 400 12px/18px Roboto, sans-serif;
+    font-size: 16px;
 }

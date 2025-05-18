@@ -1,0 +1,8 @@
+[
+    { "id": 1, "name": "Телевизор", "description": "Xiaomi 32UT", "price": 105000, "quantity": 0 },
+    { "id": 2, "name": "Ноутбук", "description": "ASUS TUF GAMING", "price": 89900, "quantity": 18 },
+    { "id": 3, "name": "Телефон", "description": "IPHONE 11", "price": 20300, "quantity": 0 },
+    { "id": 4, "name": "Телефон", "description": "IPHONE 13", "price": 51250, "quantity": 2 },
+    { "id": 5, "name": "Телефон", "description": "IPHONE 14 pro", "price": 70500, "quantity": 10 },
+    { "id": 6, "name": "Телефон", "description": "IPHONE 16", "price": 100000, "quantity": 56 }
+]
