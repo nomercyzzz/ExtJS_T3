@@ -4,6 +4,10 @@ Ext.define('MyApp.view.products.ProductGrid', {
     controller: 'products', 
     layout: 'vbox',
 
+    requires: [
+        'MyApp.store.Products'
+    ],
+
     items: [
         {
             xtype: 'toolbar',
@@ -15,11 +19,7 @@ Ext.define('MyApp.view.products.ProductGrid', {
                     labelWidth: 100,
                     enableKeyEvents: true,
                     listeners: {
-                        specialkey: function (field, e) {
-                            if (e.getKey() === e.ENTER) {
-                                field.up('product-grid').getController().onFilter();
-                            }
-                        }
+                        specialkey: 'onFilterEnterKey' 
                     }
                 },
                 {
@@ -29,12 +29,13 @@ Ext.define('MyApp.view.products.ProductGrid', {
                     labelWidth: 110,
                     enableKeyEvents: true,
                     listeners: {
-                        specialkey: function (field, e) {
-                            if (e.getKey() === e.ENTER) {
-                                field.up('product-grid').getController().onFilter();
-                            }
-                        }
+                        specialkey: 'onFilterEnterKey' 
                     }
+                },
+                {
+                    xtype: 'button',
+                    text: 'Сбросить фильтры',
+                    handler: 'onClearFilters' 
                 }
             ]
         },
@@ -42,23 +43,43 @@ Ext.define('MyApp.view.products.ProductGrid', {
             xtype: 'grid',
             flex: 1,
             store: {
-                type: 'products'
+                type: 'products',
+                autoLoad: true
             },
             columns: [
-                { text: 'ID', dataIndex: 'id', width: 50 },
+                { 
+                    text: 'ID', 
+                    dataIndex: 'id', 
+                    width: 50 
+                },
                 {
                     text: 'Имя',
                     dataIndex: 'name',
                     flex: 1,
                     cell: {
-                        encodeHtml: false
-                    },
-                    renderer: function(val) {
-                        return `<span style="color:blue;text-decoration:underline;cursor:pointer;">${val}</span>`;
+                        tools: {
+                            edit: {
+                                iconCls: 'x-fa fa-edit',
+                                tooltip: 'Редактировать',
+                                handler: 'onNameEditClick'
+                            }
+                        }
                     }
                 },
-                { text: 'Описание', dataIndex: 'description', flex: 1 },
-                { text: 'Цена', dataIndex: 'price', width: 100 },
+                { 
+                    text: 'Описание', 
+                    dataIndex: 'description', 
+                    flex: 1 
+                },
+                { 
+                    text: 'Цена', 
+                    dataIndex: 'price', 
+                    width: 100,
+                    renderer: function(value) {
+                        return Ext.util.Format.number(value, '0,000');
+                    }
+                },
+
                 {
                     text: 'Кол-во',
                     dataIndex: 'quantity',
@@ -66,13 +87,17 @@ Ext.define('MyApp.view.products.ProductGrid', {
                     cell: {
                         encodeHtml: false
                     },
-                    renderer: function(val) {
-                        return val === 0
-                            ? `<span style="background-color:red;width:100%;position:absolute">${val}</span>`
-                            : val;
+                    renderer: function(value) {
+                        if (value == 0) {
+                            return '<span style="background-color:red; color:white; display:block; width:100%;">' + value + '</span>';
+                        }
+                        return value;
                     }
                 }
-            ]
+            ],
+            listeners: {
+                itemclick: 'onGridItemClick'
+            }
         }
     ]
 });

@@ -7,8 +7,8 @@ Ext.define('MyApp.view.login.LoginController', {
         const vals = form.getValues();
 
         if (vals.login === 'admin' && vals.password === 'padmin') {
-            Ext.Viewport.removeAll(true,true);                // Скрыть форму логина
-            Ext.Viewport.add({ xtype: 'mainview' }); // Показать Main
+            Ext.Viewport.removeAll(true,true);
+            Ext.Viewport.add({ xtype: 'mainview' }); 
         } else {
             Ext.Msg.alert('Ошибка', 'Неверный логин или пароль');
         }
